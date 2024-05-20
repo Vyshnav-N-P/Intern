@@ -1,0 +1,20 @@
+<div class="Form-container">
+    <form (submit)="userRegister()">
+        <h1>LOGIN</h1>
+        <div class="component">
+            <input [(ngModel)]="username" type="text" name="username" placeholder="Username" required>
+        </div>
+        <div class="component">
+            <input [(ngModel)]="email" type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="component">
+            <input [(ngModel)]="password" type="password" name="password" class="password" placeholder="Password" required>
+        </div>
+        <button type="submit">Signup</button>
+        <h6>Signup using</h6>
+        <div class="component">
+            <i class="fab fa-facebook"></i> <!-- Facebook icon -->
+            <i class="fab fa-google"></i> <!-- Google icon -->
+        </div>
+    </form>
+</div>

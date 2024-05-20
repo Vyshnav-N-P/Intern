@@ -1,0 +1,11 @@
+<Nav>
+    <li><a routerLink="/">Home</a></li>
+
+    <li><a routerLink="/profile">
+        <div *ngIf="isLogged; else elseBlock">{{username}}</div>
+        <ng-template #elseBlock>Profile</ng-template>
+    </a></li>
+
+    <li *ngIf="!isLogged"><a routerLink="/login">Login</a></li>
+    <li *ngIf="!isLogged"><a routerLink="/signup">Signup</a></li>
+</Nav>

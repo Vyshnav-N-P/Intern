@@ -1,0 +1,16 @@
+<div class="body">
+    <app-topbar ></app-topbar>
+    
+    <div class="user-Prodile" >
+        <div class="Profile-img">
+            <img src="" alt="Profile pic">
+            <input type="file" class="file-upload" onchange="console.log(event.target.files)">
+        </div>
+        <br><br>
+        {{message}}
+        <button class="Logout-button" (click)="userLogout()" *ngIf="isLogged">LOG OUT</button>
+    </div>
+    <div>
+        <button class="edit-button">EDIT</button>
+    </div>
+</div>
