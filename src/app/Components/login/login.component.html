@@ -1,37 +1,43 @@
-<div class="Form-container" >
-    <form (submit)="userLogin()" #authForm="ngForm">
+<div class="container" >
+    <form (submit)="userLogin()" #authForm="ngForm" class="was-validated ">
         <h1>LOGIN</h1>
         <div class="component">
-            <input [(ngModel)]="username" type="text" name="username" placeholder="Username" required >
+            <input  class="form-control " [(ngModel)]="username" type="text" name="username" placeholder="Username" required >
         </div>
         <div class="component">
-            <input [(ngModel)]="password" type="password" name="password" class="password" placeholder="Password" required minlength="2">
+            <input class="form-control " [(ngModel)]="password" type="password" name="password" placeholder="Password" required minlength="2">
         </div>
-        <button type="submit" (onsubmit)="userLogin()" [disabled]="!authForm.valid" class="login-button">LOGIN</button>
+        
         <div class="component">
-            <input type="checkbox" checked>Remember me
+            <input type="checkbox" class="form-check-inline ">Remember me
         </div>
-        <h4>Login using</h4>
-        <div class="login-component">
-           <button *ngIf="!loggedIn" (click)="signInWithFB()" class="fblogin-button">Login With FB</button>
-        </div>
-        <div class="login-component">
-            <div id="g_id_onload"
-                data-client_id="763923670276-3kmto3fr8vk2uv594ciium3quim0bn3g.apps.googleusercontent.com"
-                data-context="signin"
-                data-ux_mode="popup"
-                data-login_uri="http://localhost:5000/api/login"
-                data-auto_select="true"
-                data-itp_support="true">
-            </div>
+        <button type="submit" (onsubmit)="userLogin()" [disabled]="!authForm.valid" class=" btn btn-primary active">LOGIN</button>
 
-            <div class="g_id_signin"
-                data-type="icon"
-                data-shape="circle"
-                data-theme="outline"
-                data-text="signin_with"
-                data-size="large">
-            </div>
+
+        <h4>Login using</h4>
+        <div class="d-flex justify-content-center align-items-center gap-5">
+            <div class="">
+                <button *ngIf="!loggedIn" (click)="signInWithFB()" class="btn rounded-circle btn-outline-secondary">FB</button>
+             </div>
+             <div class="">
+                 <div id="g_id_onload"
+                     data-client_id="763923670276-3kmto3fr8vk2uv594ciium3quim0bn3g.apps.googleusercontent.com"
+                     data-context="signin"
+                     data-ux_mode="popup"
+                     data-login_uri="http://localhost:5000/api/login"
+                     data-auto_select="true"
+                     data-itp_support="true">
+                 </div>
+     
+                 <div class="g_id_signin"
+                     data-type="icon"
+                     data-shape="circle"
+                     data-theme="outline"
+                     data-text="signin_with"
+                     data-size="large">
+                 </div>
+             </div>
         </div>
+       
     </form>
 </div>

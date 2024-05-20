@@ -1,16 +1,30 @@
-<div class="body">
+<div class="container">
     <app-topbar ></app-topbar>
-    
-    <div class="user-Prodile" >
-        <div class="Profile-img">
-            <img src="" alt="Profile pic">
-            <input type="file" class="file-upload" onchange="console.log(event.target.files)">
+   
+    <p class="h1 position-absolute top-50  start-50 translate-middle " *ngIf="!isLogged">{{message}} </p>
+    <form action="">
+    <div class="d-flex flex-row align-items-center justify-content-center position-absolute top-50 start-50 translate-middle" *ngIf="isLogged">
+        <div class="container d-flex flex-column ">
+            <div class=" mw-100 mh-100"><img [src]="image" alt="Profile pic" class=" img-thumbnail  "></div>
+            <input type="file" class="btn" (change)="onFileSelected($event)">
+            <button class="btn btn-secondary " (click)="onUpload()" >Upload</button>
         </div>
-        <br><br>
-        {{message}}
-        <button class="Logout-button" (click)="userLogout()" *ngIf="isLogged">LOG OUT</button>
+
+        <div class="container">
+            <label for="username" class="form-label">Username </label>
+            <input type="text" class="form-control" [value]="username" disabled >
+            <label for="role" class="form-label">Role </label>
+            <input type="text" class="form-control" [value]="role" disabled >
+            <label for="dob" class=" form-label ">DOB </label><input type="date" class=" form-control ">
+            <br><br>
+            
+            <button class="Logout-button" (click)="userLogout()" *ngIf="isLogged">LOG OUT</button>
+            
+        </div>
+       
     </div>
-    <div>
-        <button class="edit-button">EDIT</button>
-    </div>
+
+        
+       </form>
+       
 </div>

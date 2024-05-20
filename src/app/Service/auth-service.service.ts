@@ -84,4 +84,17 @@ export class AuthServiceService {
       console.error('Logout error:', error);
     }
   }
+
+  async editProfile(id:any,imgurl:any){
+    try {
+      const response = await axios.post(`http://localhost:5000/${id}/profile`, {img:imgurl}, { withCredentials: true });
+      if (response.status === 200) {
+        this.isLoggedIn = false;
+        this.cookieService.deleteAll();
+        this.router.navigate(['/login']);
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  }
 }

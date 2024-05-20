@@ -1,14 +1,14 @@
 <app-topbar></app-topbar>
 <div class="body">
     <h1>TESTING</h1>
-    <table>
+    <table class="table table-striped table-hover table-secondary">
         <thead> <!-- Add thead element for table header -->
             <tr>
                 <th>Username</th>
                 <th>Role</th>
             </tr>
         </thead>
-        <tbody> <!-- Move ngFor loop to tbody element -->
+        <tbody class="table-group-divider"> <!-- Move ngFor loop to tbody element -->
             <tr *ngFor="let x of users">
                 <td>{{x.username}}</td>
                 <td>{{x.Role}}</td>
