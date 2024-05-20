@@ -15,7 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class HomeComponent {
 isAdmin:boolean=false;
-users:any[]=[]
+users:any[]=[];
 
 constructor(private adminService:adminService,private authService:AuthServiceService,private cookieService:CookieService){
   this.loadUser();
