@@ -6,6 +6,7 @@
             <tr>
                 <th>Username</th>
                 <th>Role</th>
+                <th *ngIf="isAdmin">Remove</th> 
             </tr>
         </thead>
         <tbody class="table-group-divider"> <!-- Move ngFor loop to tbody element -->
@@ -13,7 +14,7 @@
                 <td>{{x.username}}</td>
                 <td>{{x.Role}}</td>
                 <td *ngIf="isAdmin " >
-                    <button  (click) ="deleteUser(x.userId)">Delete</button>
+                    <button class="btn btn-danger " (click) ="deleteUser(x.userId)">Delete</button>
                 </td>
                 
             </tr>

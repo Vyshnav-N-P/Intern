@@ -6,14 +6,14 @@ const bodyParser = require("body-parser");
 const routes=require("./routes/routes.js");
 const cookieParser=require('cookie-parser');
 const Adminroute = require("./routes/AdminRoutes.js");
-const { profile } = require("console");
 const profilerouter = require("./routes/profileRoutes.js");
+
 //USE
 app.use(cors({
     credentials:true,
     origin: "http://localhost:4200",
 }));
-app.use(express.json());
+app.use(express.json({limit: '200mb'}));
 app.use(bodyParser.json());
 
 
@@ -38,7 +38,7 @@ app.use(cookieParser())
 //ROUTES
 app.use('/',routes);
 app.use('/remove',Adminroute);
-app.use('/:id',profilerouter);
+app.use('/',profilerouter);
 
 //Listeing to PORT 5000
 app.listen(5000, () => {

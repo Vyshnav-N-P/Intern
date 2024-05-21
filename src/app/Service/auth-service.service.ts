@@ -52,6 +52,9 @@ export class AuthServiceService {
         this.role=response.data.Role;
         this.userid=response.data.userId;
       }
+      else{
+        this.isLoggedIn=false;
+      }
     } catch (error) {
       console.error('Check login status error:', error);
       this.isLoggedIn = false;
@@ -74,7 +77,7 @@ export class AuthServiceService {
 
   async logout(){
     try {
-      const response = await axios.post('http://localhost:5000/logout', {}, { withCredentials: true });
+      const response = await axios.post('http://localhost:5000/logout', { withCredentials: true });
       if (response.status === 200) {
         this.isLoggedIn = false;
         this.cookieService.deleteAll();
@@ -85,9 +88,9 @@ export class AuthServiceService {
     }
   }
 
-  async editProfile(id:any,imgurl:any){
+  async editProfile(id:any,image64String:string,dateofbith:any){
     try {
-      const response = await axios.post(`http://localhost:5000/${id}/profile`, {img:imgurl}, { withCredentials: true });
+      const response = await axios.post(`http://localhost:5000/profile`, {id:id , img:image64String , dob:dateofbith}, { withCredentials: true });
       if (response.status === 200) {
         this.isLoggedIn = false;
         this.cookieService.deleteAll();
@@ -95,6 +98,19 @@ export class AuthServiceService {
       }
     } catch (error) {
       console.error('Logout error:', error);
+    }
+  }
+
+  async profileCheck(id:any) {
+    try {
+      const response= await axios.get(`http://localhost:5000/profile/${id}`,{withCredentials:true})
+      if(response.status===200){
+        console.log(response.data);
+        return response.data;
+      }
+    } catch (error) {
+      console.log(error);
+      
     }
   }
 }

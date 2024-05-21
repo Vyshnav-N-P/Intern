@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const sequelize = require("../db.js"); 
 const { User } = require("../Models/user.model.js");
 const jwt = require('jsonwebtoken');
 const { log } = require("console");
@@ -85,7 +84,7 @@ router.get('/user', async (req, res) => {
 router.post('/logout', async (req, res) => {
     try {
 
-        res.clearCookie('jwt');        
+        res.clearCookie('jwt');    
         // Send response
         res.send({
             message: "Logout successful"
