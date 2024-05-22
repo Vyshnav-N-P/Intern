@@ -3,6 +3,7 @@ const router = express.Router();
 const { User } = require("../Models/user.model.js");
 const jwt = require('jsonwebtoken');
 const { log } = require("console");
+const { Op } = require("sequelize");
 
 router.get('/listusers', async (req, res) => {
     try {
@@ -106,5 +107,20 @@ router.delete('/remove/:id',async (req,res) =>{
         console.log(error.message);
     }
 })
+
+router.get('/search/:search',async (req,res)=>{
+    try{
+        const {search} = req.params;
+        console.log(search);
+        const users = await User.findAll({where:{username:{[Op.iLike]:`%${search}%`}}});
+        console.log(users);
+        res.status(200).send(users);
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).send("Internal Server Error");
+    }
+})
+
 
 module.exports = router;

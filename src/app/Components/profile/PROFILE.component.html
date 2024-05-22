@@ -1,0 +1,36 @@
+<div class="container">
+    <app-topbar ></app-topbar>
+   
+    <p class="h1 position-absolute top-50  start-50 translate-middle " *ngIf="isLogged==false">{{message}} </p>
+    <form *ngIf="isLogged==true">
+    <div class="d-flex flex-row align-items-center justify-content-center position-absolute top-50 start-50 translate-middle" *ngIf="isLogged">
+        <div class="container d-flex flex-column ">
+            <div class=" mw-100 mh-100"><img [src]="image" alt="Profile pic" class=" img-thumbnail  "></div>
+            <input type="file" class="btn" (change)="onFileSelected($event)">
+            <div *ngIf="!isEditing ; then thenblock else elseblock"></div>
+            <ng-template #thenblock><button class="btn btn-secondary " (click)="isEditing=!isEditing" >Edit</button></ng-template>
+            <ng-template #elseblock><button class="btn btn-secondary " (click)="onUpload()" >Submit Details</button></ng-template>
+        </div>
+
+        <div class="container">
+            <label for="username" class="form-label">Username </label>
+            <input type="text" class="form-control" [value]="username" [disabled]="!isEditing" >
+            <label for="role" class="form-label">Role </label>
+            <input type="text" class="form-control" [value]="role" [disabled]="!isEditing" >
+            <label for="dob" class=" form-label ">DOB </label>
+            <div *ngIf="username!='' ">
+                <input type="date" class=" form-control " [(ngModel)]="dob" [ngModelOptions]="{standalone:true}" [disabled]="!isEditing">
+            </div>
+            
+            <br><br>
+            
+            <button class="Logout-button" (click)="userLogout()" *ngIf="isLogged">LOG OUT</button>
+            
+        </div>
+       
+    </div>
+
+        
+       </form>
+       
+</div>

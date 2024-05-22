@@ -1,6 +1,10 @@
 <app-topbar></app-topbar>
 <div class="body">
     <h1>TESTING</h1>
+    <div class="position-absolute end-0 top-25 ">
+        <input type="text" class="form-control w-75 h-auto" placeholder="  Search User" [(ngModel)]="searchbar" (input)="searchUser()">
+    </div>
+    
     <table class="table table-striped table-hover table-secondary">
         <thead> <!-- Add thead element for table header -->
             <tr>
@@ -9,7 +13,8 @@
                 <th *ngIf="isAdmin">Remove</th> 
             </tr>
         </thead>
-        <tbody class="table-group-divider"> <!-- Move ngFor loop to tbody element -->
+        <!-- Loop for listing Users from an array -->
+        <tbody class="table-group-divider">
             <tr *ngFor="let x of users">
                 <td>{{x.username}}</td>
                 <td>{{x.Role}}</td>
